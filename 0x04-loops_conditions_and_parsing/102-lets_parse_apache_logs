@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# This script parses apache log files in list format
-
-myfile="apache-access.log"
-awk -F' ' '{ print $1, $9}' $myfile
+# This script is displaying "Best School" 10 times
+file_h="apache-access.log"
+awk -F' ' '{ print $1, $9}' $file_h
