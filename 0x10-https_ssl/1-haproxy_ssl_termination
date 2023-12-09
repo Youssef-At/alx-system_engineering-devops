@@ -40,5 +40,5 @@ frontend  amine-frontend
         redirect scheme https code 301 if !{ ssl_fc }
 backend amine-backend
         balance roundrobin
-        server 63210-web-01 54.205.163.79:80 check
-        server 63210-web-02 100.26.250.253:80 check
+        server 364004-web-01 34.232.70.0:80 check
+        server 364004-web-02 54.89.195.107:80 check
