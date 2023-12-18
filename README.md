@@ -1,2 +1,1 @@
-0x00. Shell, basics
-the fundamental concepts and commands used in a Unix-based shell environment
+attack_is_the_best_defense
