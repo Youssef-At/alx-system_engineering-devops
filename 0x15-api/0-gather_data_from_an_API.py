@@ -1,34 +1,25 @@
 #!/usr/bin/python3
-'''
-Python script that, using this REST API,
-for a given employee ID, returns
-information about his/her RequestData list progress.
-'''
+""" Script that uses JSONPlaceholder API to get information about employee """
 import requests
-from sys import argv
+import sys
 
-if __name__ == '__main__':
-    UID = argv[1]
-    Link = "https://jsonplaceholder.typicode.com/users/{}".format(
-        UID
-    )
-    user = requests.get(
-        Link,
-    ).json()
-    Link = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
-        UID
-    )
-    RequestData = requests.get(
-        Link,
-    ).json()
-    with open("{}.csv".format(user_id), 'w', newline='') as csvfile:
-        taskwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in RequestData:
-            taskwriter.writerow(
-                [
-                    int(user_id),
-                    user.get('username'),
-                    task.get('completed'),
-                    task.get('title')
-                ]
-            )
+
+if __name__ == "__main__":
+    url = 'https://jsonplaceholder.typicode.com/'
+
+    user = '{}users/{}'.format(url, sys.argv[1])
+    res = requests.get(user)
+    json_o = res.json()
+    print("Employee {} is done with tasks".format(json_o.get('name')), end="")
+
+    todos = '{}todos?userId={}'.format(url, sys.argv[1])
+    res = requests.get(todos)
+    tasks = res.json()
+    l_task = []
+    for task in tasks:
+        if task.get('completed') is True:
+            l_task.append(task)
+
+    print("({}/{}):".format(len(l_task), len(tasks)))
+    for task in l_task:
+        print("\t {}".format(task.get("title")))
