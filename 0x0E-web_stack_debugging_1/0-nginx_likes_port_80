@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-#a Bash script that configures a server to the some requirements
-sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx restart
+#A scripy that configures an Nginx server to listen on port 80 from port 8080
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
